@@ -15,5 +15,5 @@
         android:adjustViewBounds="true"
         android:layout_margin="0dp"
         android:contentDescription="@string/cont_desc_poster" />
-
+<!--adjustViewBounds makes the images display edge to edge-->
 </RelativeLayout>
