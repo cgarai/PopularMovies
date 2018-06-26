@@ -1,3 +1,4 @@
+no_git*.*
 *.iml
 .gradle
 /local.properties
