@@ -1,4 +1,3 @@
-no_git*.*
 *.iml
 .gradle
 /local.properties
@@ -9,3 +8,5 @@ no_git*.*
 /build
 /captures
 .externalNativeBuild
+/**/no_github.*
+/gradle.properties

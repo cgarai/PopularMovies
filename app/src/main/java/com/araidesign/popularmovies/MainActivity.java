@@ -47,7 +47,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        api_key = getString(R.string.my_API_key);
+//        TODO 1:  Currently set up to use the BuildConfig method of hiding the API_Key from github.
+//        If no_github.xml contains the API key then use:
+//        api_key = getString(R.string.my_API_key);
+//        Otherwise use:
+        api_key = BuildConfig.my_API_KEY;
 
         mRecyclerView = findViewById(R.id.movie_recycler_view);
 
@@ -64,12 +68,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
             makePopularMovieSearch();
 
         }
-//        TODO 2: Having trouble getting the posters to display upon opening and device rotation
-//        Device rotation was fixed when I converted movieSearchTask to static, per warnings.
-//        Tried using scrollBy with null values to get a redraw
-//        mMovieAdapter.notifyDataSetChanged();
-//        mRecyclerView.scrollBy(0,0);
-
+//        TODO Fixed! 1: Having trouble getting the posters to display upon opening and Changing Sort
+//          This was fixed by changing the activity_main.xml imageview from wrap_content to match_parent  I don't understand why!!
     }
 
 
@@ -117,15 +117,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
 
         launchDetailActivity(clickedItemIndex);
 
-
-//
-//        if (mToast != null) {
-//            mToast.cancel();
-//        }
-//        String toastMessage = "Item #" + clickedItemIndex + " clicked.";
-//        mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
-//
-//        mToast.show();
     }
 
     void makePopularMovieSearch() {
@@ -143,6 +134,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
     }
 
 //    TODO 3:  I get a warning that AsyncTask should be static, but  then mLoadingIndicator and mMovieAdapter need to be static, but that causes warnings as well
+//    Warning:(149, 19) This AsyncTask class should be static or leaks might occur (com.araidesign.popularmovies.MainActivity.MovieSearchTask)
+
     public  class MovieSearchTask extends AsyncTask<URL, Void, ArrayList<MovieData>> {
 
         @Override
@@ -176,10 +169,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
         protected void onPostExecute(ArrayList<MovieData> movieData){
             mLoadingIndicator.setVisibility(View.INVISIBLE);
 
-// TODO: Is this the best method to copy ArrayList ??
             allMovieData.addAll(movieData);
 
-//    TODO 2: MainActivity is not consistently getting the screen refresshed when selecting Popular or Top Rated
             mMovieAdapter.notifyDataSetChanged();
 
         }

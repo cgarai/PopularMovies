@@ -125,6 +125,7 @@
             android:layout_marginBottom="80dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
+            android:textSize="20sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
     </ScrollView>
