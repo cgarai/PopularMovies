@@ -4,9 +4,11 @@
 
     <!--The Movie Database Strings-->
 
-    <!--TODO 1: Currently set up to use Build.Config to hide API_Key from github.  Alternative is to put key in
-      no_github.xml as a resource string
-    Uncomment the line below and insert your API key-->
+    <!--TODO 1: Currently set up to use no_github.xml to hide API_Key from github.
+     no_github.xml contains API_Key as a resource string
+    Uncomment the line below and insert your API key or create a file
+    no_github.xml and put the line below inside.-->
+
     <!--<string name="my_API_key">YOUR_API_KEY_HERE</string>-->
 
     <string name="Base_URL">http://image.tmdb.org/t/p/</string>
